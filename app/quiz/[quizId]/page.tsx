@@ -3,7 +3,7 @@
 import { use, useEffect, useState } from "react";
 
 export default function TakeQuiz({params}) {
-  const {quizId} = use(params)
+  const {quizId}:any = use(params)
   const [quiz, setQuiz] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [result, setResult] = useState(null);
@@ -120,7 +120,7 @@ export default function TakeQuiz({params}) {
                 onChange={(e) => handleChange(e.target.value, i)}
                 placeholder="Type your answer"
                 required
-                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
               />
             )}
           </div>

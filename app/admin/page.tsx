@@ -106,7 +106,7 @@ export default function Admin() {
 
             {q.type === "truefalse" && (
               <select
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-400"
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder:text-gray-400 text-black"
                 value={q.answer}
                 onChange={(e) => handleQuestionChange(i, "answer", e.target.value)}
                 required
