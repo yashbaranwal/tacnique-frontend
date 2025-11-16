@@ -10,10 +10,10 @@ export default function TakeQuiz({params}) {
 
   useEffect(() => {
     if (quizId) {
-      fetch("/api/quizzes")
+      fetch(process.env.NEXT_PUBLIC_API_URL + `/quizzes/${quizId}`)
         .then((r) => r.json())
         .then((data) => {
-          setQuiz(data.find((q) => q.id === quizId));
+          setQuiz(data);
           setAnswers([]);
           setResult(null);
         });
@@ -58,12 +58,12 @@ export default function TakeQuiz({params}) {
       </h1>
 
       <form onSubmit={handleSubmit} className="space-y-10">
-        {quiz.questions.map((q, i) => (
+        {quiz.questions?.map((q, i) => (
           <div
             key={i}
             className="border border-indigo-200 rounded-lg p-6 bg-indigo-50"
           >
-            <p className="font-semibold text-lg mb-4">{q.question}</p>
+            <p className="font-semibold text-lg mb-4 text-black">{q.question}</p>
 
             {q.type === "mcq" &&
               q.options.map((opt, j) => (
@@ -129,7 +129,7 @@ export default function TakeQuiz({params}) {
         <div className="text-center">
           <button
             type="submit"
-            className="px-10 py-3 bg-indigo-600 rounded font-semibold text-white hover:bg-indigo-700 transition"
+            className="px-10 py-3 bg-indigo-600 rounded font-semibold text-white hover:bg-indigo-700 transition cursor-pointer"
           >
             Submit
           </button>

@@ -10,7 +10,7 @@ export default function Admin() {
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    fetch("/api/quizzes").then((r) => r.json()).then(setQuizzes);
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/quizzes").then((r) => r.json()).then(setQuizzes);
   }, []);
 
   const addQuestion = () => {
@@ -34,14 +34,14 @@ export default function Admin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("/api/quizzes", {
+    await fetch(process.env.NEXT_PUBLIC_API_URL + "/quizzes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, questions }),
     });
     setTitle("");
     setQuestions([{ type: "mcq", question: "", options: ["", "", ""], answer: "" }]);
-    fetch("/api/quizzes").then((r) => r.json()).then(setQuizzes);
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/quizzes").then((r) => r.json()).then(setQuizzes);
   };
 
   return (
@@ -151,9 +151,9 @@ export default function Admin() {
         </h2>
         <ul className="space-y-2">
           {quizzes.map((qz) => (
-            <li key={qz.id} className="border-b pb-2">
+            <li key={qz._id} className="border-b pb-2">
               <a
-                href={`/quiz/${qz.id}`}
+                href={`/quiz/${qz._id}`}
                 className="text-indigo-600 hover:underline font-medium"
               >
                 {qz.title}

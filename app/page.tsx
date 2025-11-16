@@ -6,7 +6,7 @@ export default function Home() {
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    fetch("/api/quizzes").then((r) => r.json()).then(setQuizzes);
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/quizzes").then((r) => r.json()).then(setQuizzes);
   }, []);
 
   return (
@@ -20,9 +20,9 @@ export default function Home() {
           <li className="text-gray-500 text-center">No quizzes available.</li>
         )}
         {quizzes.map((qz) => (
-          <li key={qz.id}>
+          <li key={qz._id}>
             <a
-              href={`/quiz/${qz.id}`}
+              href={`/quiz/${qz._id}`}
               className="block px-6 py-4 bg-indigo-50 rounded-lg border border-indigo-200 text-indigo-700 font-semibold hover:bg-indigo-100 transition"
             >
               {qz.title}
