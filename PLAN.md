@@ -1,3 +1,6 @@
+## Deployment on Vercel
+- https://tacnique-frontend.vercel.app/
+
 ## Assumptions
 
 - The application will use Next.js 16 with the App Router for frontend pages.
@@ -68,5 +71,3 @@ Admin Panel:
 - Public users listing and taking quizzes.
 - Displaying real-time score and answers.
 - Optimize for usability and performance.
-
-## Deployment on Vercel (frontend) and a Node.js hosting platform like Heroku or DigitalOcean with MongoDB Atlas.
